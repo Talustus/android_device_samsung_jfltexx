@@ -1,4 +1,4 @@
-# system.prop for SGH-M919
+# system.prop for SPH-L720
 #
 
 # cannot take spaces
@@ -6,6 +6,10 @@ rild.libargs=-d /dev/smd0
 
 # Fields for custom RIL
 # MAX PROP NAME is 31 chars --|
-ro.telephony.ril_class=SamsungQualcommUiccRIL
-telephony.lteOnGsmDevice=1
+ro.telephony.ril_class=SamsungCDMAQualcommRIL
+ro.cdma.home.operator.numeric=310120
+ro.cdma.home.operator.alpha=Sprint
+ro.telephony.default_network=8
+telephony.lteOnCdmaDevice=1
+telephony.sms.pseudo_multipart=1
 
