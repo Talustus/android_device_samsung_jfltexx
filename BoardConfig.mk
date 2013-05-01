@@ -21,7 +21,7 @@
 #
 
 # inherit from common JF
--include device/samsung/jf-common/BoardConfigCommon.mk
+-include device/samsung/jflte-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/samsung/jfltespr/BoardConfigVendor.mk
@@ -30,7 +30,20 @@
 TARGET_OTA_ASSERT_DEVICE := jfltespr
 
 # Kernel
+TARGET_KERNEL_SOURCE         := kernel/samsung/jf
 TARGET_KERNEL_CONFIG         := jf_spr_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := jf_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 
+# TWRP flags
+DEVICE_RESOLUTION := 1080x1920
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/external_sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sdcard"
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+SP1_NAME := "efs"
+SP1_BACKUP_METHOD := image
+SP1_MOUNTABLE := 0
