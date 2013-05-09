@@ -31,22 +31,66 @@ TARGET_OTA_ASSERT_DEVICE := GT-I9505,i9505,jflte
 
 # Kernel
 TARGET_KERNEL_SOURCE         := kernel/samsung/jf
-TARGET_KERNEL_CONFIG         := jf_defconfig
+TARGET_KERNEL_CONFIG         := cyanogen_jf_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := jf_eur_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 
-# TWRP flags
+#########################
+#### TWRP Recovery   ####
+#### Common Options  ####
+#########################
+# Screen Resulution the device uses
 DEVICE_RESOLUTION := 1080x1920
-TW_INTERNAL_STORAGE_PATH := "/data/media/0"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sdcard"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sdcard"
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
+
+# fixes slanty looking graphics on some devices
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
+
+# this enables proper handling of /data/media on devices that have this folder for storage
+RECOVERY_SDCARD_ON_DATA := true
+
+# enable/disable things like sdcard partitioning etc
+BOARD_HAS_NO_REAL_SDCARD := true
+
+# enable/disable the reboot bootloader button on the reboot menu, if your device uses Bootloader Mode instead of Download Mode
+TW_NO_REBOOT_BOOTLOADER := true
+
+# enable/disable the reboot downloadmode button on the reboot menu, if your device uses Download Mode instead of Bootloader Mode
+TW_HAS_DOWNLOAD_MODE := true
+
+# Enable ICS Crypto Support
+TW_INCLUDE_CRYPTO := true
+
+# Path to the internal Storage
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+
+# Mountpoint for the internal Storage
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+
+# Path to the external Storage
+TW_EXTERNAL_STORAGE_PATH := "/external_sdcard"
+
+# Mountpoint for the external Storage
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sdcard"
+
+# Custom Path to the brigthness sys fs control file
+TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.526593/leds/lcd-backlight/brightness
+
+# Exclude SuperSU install from recovery
+TW_EXCLUDE_SUPERSU := true
+
+# Testing: FB2PNG
+TW_INCLUDE_FB2PNG := true
+
+######################################
+## Additional Partitions to backup  ##
+##  define each in recovery.fstab   ##
+######################################
+## PART1 - EFS
 SP1_NAME := "efs"
 SP1_BACKUP_METHOD := files
 SP1_MOUNTABLE := 1
+
+## PART2 - MODEM
 SP1_NAME := "modem"
 SP1_BACKUP_METHOD := image
 SP1_MOUNTABLE := 0
