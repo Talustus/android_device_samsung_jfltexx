@@ -27,7 +27,7 @@
 -include vendor/samsung/i9505/BoardConfigVendor.mk
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := GT-I9505,i9505,jflte
+TARGET_OTA_ASSERT_DEVICE := GT-I9505,i9505,jfltexx
 
 # Kernel
 TARGET_KERNEL_SOURCE         := kernel/samsung/jf
@@ -39,6 +39,12 @@ TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 #### TWRP Recovery   ####
 #### Common Options  ####
 #########################
+# Use TWRP instead of CWM
+TARGET_RECOVERY_USE_TWRP := true
+
+# Target custom RECOVERY RC
+TARGET_RECOVERY_INITRC := device/samsung/i9505/recovery/root/init.rc
+
 # Screen Resulution the device uses
 DEVICE_RESOLUTION := 1080x1920
 
@@ -57,9 +63,6 @@ TW_NO_REBOOT_BOOTLOADER := true
 # enable/disable the reboot downloadmode button on the reboot menu, if your device uses Download Mode instead of Bootloader Mode
 TW_HAS_DOWNLOAD_MODE := true
 
-# Enable ICS Crypto Support
-TW_INCLUDE_CRYPTO := true
-
 # Path to the internal Storage
 TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 
@@ -75,11 +78,44 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sdcard"
 # Custom Path to the brigthness sys fs control file
 TW_BRIGHTNESS_PATH := /sys/devices/platform/msm_fb.526593/leds/lcd-backlight/brightness
 
+# Custom Path to the target lunfile
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+
 # Exclude SuperSU install from recovery
 TW_EXCLUDE_SUPERSU := true
 
 # Testing: FB2PNG
-TW_INCLUDE_FB2PNG := true
+TW_INCLUDE_FB2PNG := false
+
+# Debuging: Enable this only if u realy need to debug touch etc
+TWRP_EVENT_LOGGING := false
+
+##################################
+# TWRP Device Decryption Support #
+##################################
+# Enable ICS Crypto Support
+TW_INCLUDE_CRYPTO := true
+
+# support for Samsung crypto (TWRP 2.4+)
+TW_INCLUDE_CRYPTO_SAMSUNG := true
+
+# filesystem type for crypted device (TWRP 2.4+)
+TW_CRYPTO_FS_TYPE := "ext4"
+
+# partition for encrypted storage (TWRP 2.4+)
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/mmcblk0p29"
+
+# mountpoint for encrypted storage (TWRP 2.4+)
+TW_CRYPTO_MNT_POINT := "/data"
+
+# Crypto Filesystem Options (TWRP 2.4+)
+TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,noauto_da_alloc,discard,journal_async_commit,errors=panic      wait,check,encryptable=footer"
+
+# Crypto Filesystem FLAGS (TWRP 2.4+)
+TW_CRYPTO_FS_FLAGS := "0x00000406"
+
+# Crypto Key Location (TWRP 2.4+)
+TW_CRYPTO_KEY_LOC := "footer"
 
 ######################################
 ## Additional Partitions to backup  ##
