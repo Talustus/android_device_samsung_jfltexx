@@ -27,13 +27,13 @@
 -include vendor/samsung/i9505/BoardConfigVendor.mk
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := GT-I9505,i9505,jfltexx
+TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505
 
-# Kernel
-TARGET_KERNEL_SOURCE         := kernel/samsung/jf
-TARGET_KERNEL_CONFIG         := cyanogen_jf_defconfig
-TARGET_KERNEL_VARIANT_CONFIG := jf_eur_defconfig
-TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
+## Kernel
+TARGET_KERNEL_CONFIG         := jf_eur_defconfig
+# TARGET_KERNEL_SOURCE         := kernel/samsung/jf
+# TARGET_KERNEL_VARIANT_CONFIG := jf_eur_defconfig
+# TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 
 #########################
 #### TWRP Recovery   ####

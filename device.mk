@@ -20,6 +20,7 @@ $(call inherit-product-if-exists, vendor/samsung/i9505/i9505-vendor.mk)
 ## common overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/jf-common/overlay-gsm
 
+## TWRP additions
 ifeq ($(TARGET_RECOVERY_USE_TWRP),true)
 PRODUCT_COPY_FILES += \
 	device/samsung/i9505/recovery/root/sbin/libsec_km.so:recovery/root/sbin/libsec_km.so \
