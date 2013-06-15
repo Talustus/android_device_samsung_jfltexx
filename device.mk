@@ -15,7 +15,7 @@
 #
 
 ## (2) Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/i9505/i9505-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/jfltexx/jfltexx-vendor.mk)
 
 ## common overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/jf-common/overlay-gsm
@@ -23,9 +23,9 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/jf-common/overlay-gsm
 ## TWRP additions
 ifeq ($(TARGET_RECOVERY_USE_TWRP),true)
 PRODUCT_COPY_FILES += \
-	device/samsung/i9505/recovery/root/sbin/libsec_km.so:recovery/root/sbin/libsec_km.so \
-	device/samsung/i9505/recovery/root/sbin/libsec_ecryptfs.so:recovery/root/sbin/libsec_ecryptfs.so \
-	device/samsung/i9505/recovery/root/sbin/libkeyutils.so:recovery/root/sbin/libkeyutils.so
+	device/samsung/jfltexx/recovery/root/sbin/libsec_km.so:recovery/root/sbin/libsec_km.so \
+	device/samsung/jfltexx/recovery/root/sbin/libsec_ecryptfs.so:recovery/root/sbin/libsec_ecryptfs.so \
+	device/samsung/jfltexx/recovery/root/sbin/libkeyutils.so:recovery/root/sbin/libkeyutils.so
 endif
 
 # Inherit from jf-common

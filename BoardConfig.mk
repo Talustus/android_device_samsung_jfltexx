@@ -24,7 +24,7 @@
 -include device/samsung/jf-common/BoardConfigCommon.mk
 
 # inherit from the proprietary version
--include vendor/samsung/i9505/BoardConfigVendor.mk
+-include vendor/samsung/jfltexx/BoardConfigVendor.mk
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505
@@ -40,10 +40,10 @@ TARGET_KERNEL_CONFIG         := jf_eur_defconfig
 #### Common Options  ####
 #########################
 # Use TWRP instead of CWM
-TARGET_RECOVERY_USE_TWRP := true
+TARGET_RECOVERY_USE_TWRP := false
 
 # Target custom RECOVERY RC
-TARGET_RECOVERY_INITRC := device/samsung/i9505/recovery/root/init.rc
+TARGET_RECOVERY_INITRC := device/samsung/jfltexx/recovery/root/init.rc
 
 # Screen Resulution the device uses
 DEVICE_RESOLUTION := 1080x1920
