@@ -20,13 +20,5 @@ $(call inherit-product-if-exists, vendor/samsung/jfltexx/jfltexx-vendor.mk)
 ## common overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/jf-common/overlay-gsm
 
-## TWRP additions
-ifeq ($(TARGET_RECOVERY_USE_TWRP),true)
-PRODUCT_COPY_FILES += \
-	device/samsung/jfltexx/recovery/root/sbin/libsec_km.so:recovery/root/sbin/libsec_km.so \
-	device/samsung/jfltexx/recovery/root/sbin/libsec_ecryptfs.so:recovery/root/sbin/libsec_ecryptfs.so \
-	device/samsung/jfltexx/recovery/root/sbin/libkeyutils.so:recovery/root/sbin/libkeyutils.so
-endif
-
 # Inherit from jf-common
 $(call inherit-product, device/samsung/jf-common/jf-common.mk)
